@@ -1,5 +1,5 @@
 # Budgeteer
-_Developed by Ben Chan in Sept 2017
+_Developed by Ben Chan in Sept 2017_
 
 ## Installation
 * Install and start the client:
