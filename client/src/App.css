@@ -7,7 +7,10 @@
 
 .App-logo {
   /*animation: App-logo-spin infinite 20s linear;*/
-  height: 25px;
+  height: 30px;
+  position: relative;
+  top: 5px;
+  right: 10px;
 }
 
 .App-header {
@@ -18,7 +21,26 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 1.2em;
+  color: #fff !important;
+}
+
+.App-a {
+  text-decoration: none !important;
+}
+
+.App-vertical-icon {
+  color: #fff !important;
+}
+
+.App-menu-items {
+  color: #fff !important;
+  position: relative;
+  top: -6px;
+}
+
+.App-menu-item {
+  display: inline-block;  
 }
 
 .App-intro {
