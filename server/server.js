@@ -38,6 +38,8 @@ db.once('open', function() {
 // Bear models lives here
 var Bear     = require('./app/models/bear');
 
+var dataModifier     = require('./app/utils/dataModifier.js');
+
 // ROUTES FOR OUR API
 // =============================================================================
 
@@ -80,7 +82,9 @@ router.route('/bears')
 		Bear.find(function(err, bears) {
 			if (err)
 				res.send(err);
-      res.set({ 'Content-Range': 'bears 0-1/1' });
+      bears = dataModifier.remapIdsFromMongoDB(bears);
+      const count = bears.length;
+      res.set({ 'Content-Range': `bears 0-${count}/1` });
 			res.json(bears);
 		});
 	});
@@ -94,7 +98,7 @@ router.route('/bears/:bear_id')
 		Bear.findById(req.params.bear_id, function(err, bear) {
 			if (err)
 				res.send(err);
-      res.set("content-range", "1");
+      bear = dataModifier.remapId(bear);
       res.json(bear);
 		});
 	})
