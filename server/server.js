@@ -9,7 +9,9 @@ var morgan     = require('morgan');
 var cors       = require('cors');
 
 const corsOptions = {
-  origin: 'http://localhost:3000'
+  origin: 'http://localhost:3000',
+  allowedHeaders: ['Content-Type', 'Content-Range'],
+  exposedHeaders: ['Content-Range']
 }
 // configure app
 app.use(morgan('dev')); // log requests to the console
