@@ -23,7 +23,7 @@ var port     = process.env.PORT || 8080; // set our port
 
 // DATABASE SETUP
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://admin:admin1!@ds163294.mlab.com:63294/benchan-budgeteer'); // connect to our database
+mongoose.connect('mongodb://admin:admin1!@ds163294.mlab.com:63294/benchan-budgeteer', { useMongoClient: true }); // connect to our database
 
 // Handle the connection event
 var db = mongoose.connection;
@@ -67,7 +67,6 @@ router.route('/bears')
 		bear.save(function(err) {
 			if (err)
 				res.send(err);
-
 			res.json({ message: 'Bear created!' });
 		});
 
@@ -79,7 +78,7 @@ router.route('/bears')
 		Bear.find(function(err, bears) {
 			if (err)
 				res.send(err);
-
+      res.set({ 'Content-Range': 'bears 0-1/1' });
 			res.json(bears);
 		});
 	});
@@ -93,7 +92,7 @@ router.route('/bears/:bear_id')
 		Bear.findById(req.params.bear_id, function(err, bear) {
 			if (err)
 				res.send(err);
-      res.set("content-range", "1");      
+      res.set("content-range", "1");
       res.json(bear);
 		});
 	})
