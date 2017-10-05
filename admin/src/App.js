@@ -1,5 +1,5 @@
 import React from 'react';
-import { jsonServerRestClient, Admin, Resource, Delete } from 'admin-on-rest';
+import { Admin, Resource, Delete } from 'admin-on-rest';
 import { PostList, PostEdit, PostCreate } from './views/posts';
 import Dashboard from './views/dashboard';
 import AuthClient from './clients/authClient';
