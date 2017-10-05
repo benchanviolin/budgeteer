@@ -6,9 +6,14 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 var app        = express();
 var morgan     = require('morgan');
+var cors       = require('cors');
 
+const corsOptions = {
+  origin: 'http://localhost:3000'
+}
 // configure app
 app.use(morgan('dev')); // log requests to the console
+app.use(cors(corsOptions)); // log requests to the console
 
 // configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +23,7 @@ var port     = process.env.PORT || 8080; // set our port
 
 // DATABASE SETUP
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
+mongoose.connect('mongodb://admin:admin1!@ds163294.mlab.com:63294/benchan-budgeteer'); // connect to our database
 
 // Handle the connection event
 var db = mongoose.connection;
@@ -46,7 +51,7 @@ router.use(function(req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-	res.json({ message: 'hooray! welcome to our api!' });	
+	res.json({ message: 'hooray! welcome to our api!' });
 });
 
 // on routes that end in /bears
@@ -55,7 +60,7 @@ router.route('/bears')
 
 	// create a bear (accessed at POST http://localhost:8080/bears)
 	.post(function(req, res) {
-		
+
 		var bear = new Bear();		// create a new instance of the Bear model
 		bear.name = req.body.name;  // set the bears name (comes from the request)
 
@@ -66,7 +71,7 @@ router.route('/bears')
 			res.json({ message: 'Bear created!' });
 		});
 
-		
+
 	})
 
 	// get all the bears (accessed at GET http://localhost:8080/api/bears)
@@ -88,7 +93,8 @@ router.route('/bears/:bear_id')
 		Bear.findById(req.params.bear_id, function(err, bear) {
 			if (err)
 				res.send(err);
-			res.json(bear);
+      res.set("content-range", "1");      
+      res.json(bear);
 		});
 	})
 
