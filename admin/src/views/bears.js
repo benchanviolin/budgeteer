@@ -1,5 +1,5 @@
 import React from 'react';
-import { Edit, List, Responsive, SimpleList, Datagrid, Filter, TextField, EditButton, TextInput, SimpleForm, DisabledInput } from 'admin-on-rest';
+import { Create, Edit, List, Responsive, SimpleList, Datagrid, Filter, TextField, EditButton, TextInput, SimpleForm, DisabledInput } from 'admin-on-rest';
 
 export const BearList = (props) => (
   <List {...props} filters={<BearFilter />}>
@@ -39,4 +39,12 @@ export const BearEdit = (props) => (
             <TextInput source="name" />
         </SimpleForm>
     </Edit>
+);
+
+export const BearCreate = (props) => (
+    <Create {...props}>
+        <SimpleForm>
+            <TextInput source="name" />
+        </SimpleForm>
+    </Create>
 );
