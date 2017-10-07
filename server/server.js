@@ -112,11 +112,11 @@ router.route('/bears/:bear_id')
 				res.send(err);
 
 			bear.name = req.body.name;
-			bear.save(function(err) {
+			bear.save(function(err, updatedBear) {
 				if (err)
 					res.send(err);
-
-				res.json({ message: 'Bear updated!' });
+        updatedBear = dataModifier.remapId(updatedBear);
+				res.json(updatedBear);
 			});
 
 		});
