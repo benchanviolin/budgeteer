@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var app        = express();
 var morgan     = require('morgan');
 var cors       = require('cors');
+const queryString = require('query-string');
 
 const corsOptions = {
   origin: 'http://localhost:3000',
