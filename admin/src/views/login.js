@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { userLogin } from 'admin-on-rest';
 import FacebookAuth from 'react-facebook-auth';
 
+const FACEBOOK_APP_ID = process.env.REACT_APP_FACEBOOK_APP_ID;
+
 const FacebookButton = ({ onClick }) => (
   <button onClick={onClick}>
     Login with facebook
@@ -29,7 +31,7 @@ class LoginPage extends Component {
       <div>
         <h1>Facebook Auth</h1>
         <FacebookAuth
-          appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+          appId={FACEBOOK_APP_ID}
           callback={this.authenticate}
           component={FacebookButton}
         />
