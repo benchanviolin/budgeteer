@@ -2050,7 +2050,7 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
-dotenv@4.0.0:
+dotenv@4.0.0, dotenv@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
@@ -5384,6 +5384,12 @@ react-event-listener@^0.4.5:
     fbjs "^0.8.4"
     prop-types "^15.5.4"
     warning "^3.0.0"
+
+react-facebook-auth@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-facebook-auth/-/react-facebook-auth-1.1.0.tgz#d6b46b92919076c9caf58a3a174790334b3430fa"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-redux@~5.0.4:
   version "5.0.6"
