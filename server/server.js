@@ -2,15 +2,18 @@
 // =============================================================================
 
 // call the packages we need
-var express    = require('express');
+var express = require('express');
 var bodyParser = require('body-parser');
-var app        = express();
-var morgan     = require('morgan');
-var cors       = require('cors');
+var app = express();
+var morgan = require('morgan');
+var cors = require('cors');
+var dotenv = require('dotenv').config();
 const queryString = require('query-string');
 
+const { ORIGIN_URL, MONGODB_URL, PORT } = process.env;
+
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ORIGIN_URL,
   allowedHeaders: ['Content-Type', 'Content-Range'],
   exposedHeaders: ['Content-Range']
 }
@@ -22,11 +25,11 @@ app.use(cors(corsOptions)); // log requests to the console
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 8080; // set our port
+var port = PORT;
 
 // DATABASE SETUP
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://admin:admin1!@ds163294.mlab.com:63294/benchan-budgeteer', { useMongoClient: true }); // connect to our database
+mongoose.connect(MONGODB_URL, { useMongoClient: true }); // connect to our database
 
 // Handle the connection event
 var db = mongoose.connection;
